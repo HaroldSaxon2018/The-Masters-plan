@@ -1,3 +1,3 @@
-# Blarg.Torn.api
+# attempts
 
-This is my attempt to use Blargbot to make API call to Torn
+This is my attempt to use languages. I don't really u derstand but I'm getting better

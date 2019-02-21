@@ -1,3 +1,3 @@
 # The-Master.api
 
-This is the main branch
+This is the master branch

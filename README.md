@@ -6,4 +6,4 @@ I am currently learning Python 3 through Sololearn, and using Pydroid 3 as my co
 
 Any help is much appreciated
 
-Thamk you
+Thank you

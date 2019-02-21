@@ -1,0 +1,50 @@
+import discord
+from discord.ext import commands
+import asyncio
+
+client = discord.Client()
+
+@client.event
+async def on_message(message):
+    # we do not want the bot to reply to itself
+    if message.author == client.user:
+        return
+        
+    if message.content.startswith('!hello'):
+        msg = 'Ello, how may i be of service to you 	{0.author.mention}'.format(message)
+        await client.send_message(message.channel, msg)
+        
+ 
+@client.event
+async def on_message(message):
+    # we do not want the bot to reply to itself
+    if message.author == client.user:
+        return
+        
+    if message.content.startswith('!bye'):
+        msg = 'Fine, Leave already!!!  	{0.author.mention}'.format(message)
+        await client.send_message(message.channel, msg)
+ 
+ 
+@client.event
+async def on_member_join(member):
+    server = member.server
+    fmt = 'Welcome {0.mention} to {1.name}!'
+    await client.send_message(server, fmt.format(member, server))
+ 
+async def my_background_task():
+    await client.wait_until_ready()
+    counter = 0
+    channel = discord.Object(id='channel_id_here')
+    while not client.is_closed:
+        counter += 1
+        await client.send_message(channel, counter)
+        await asyncio.sleep(60) # task runs every 60 seconds 
+ 
+@client.event
+async def on_ready():
+	print('The bot is ready')
+	print(client.user.name)
+	print(client.user.id)
+		
+client.run('NTQ3NjA0NzE1NDEyNjUyMDMz.D06sDA.fyQVoK0yMlNDeCMQE5BM-Qk3zf0')

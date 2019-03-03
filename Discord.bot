@@ -1,50 +1,33 @@
-import discord
-from discord.ext import commands
-import asyncio
+import discord 
+from discord.ext	import commands
+import asyncio 
+import time
 
-client = discord.Client()
+client = commands.Bot(command_prefix =('.')) 
 
-@client.event
-async def on_message(message):
-    # we do not want the bot to reply to itself
-    if message.author == client.user:
-        return
-        
-    if message.content.startswith('!hello'):
-        msg = 'Ello, how may i be of service to you 	{0.author.mention}'.format(message)
-        await client.send_message(message.channel, msg)
-        
- 
-@client.event
-async def on_message(message):
-    # we do not want the bot to reply to itself
-    if message.author == client.user:
-        return
-        
-    if message.content.startswith('!bye'):
-        msg = 'Fine, Leave already!!!  	{0.author.mention}'.format(message)
-        await client.send_message(message.channel, msg)
- 
- 
-@client.event
-async def on_member_join(member):
-    server = member.server
-    fmt = 'Welcome {0.mention} to {1.name}!'
-    await client.send_message(server, fmt.format(member, server))
- 
-async def my_background_task():
-    await client.wait_until_ready()
-    counter = 0
-    channel = discord.Object(id='channel_id_here')
-    while not client.is_closed:
-        counter += 1
-        await client.send_message(channel, counter)
-        await asyncio.sleep(60) # task runs every 60 seconds 
- 
-@client.event
-async def on_ready():
-	print('The bot is ready')
+@client.listen()
+async def on_ready(): 
+	print('Logged in as') 
 	print(client.user.name)
-	print(client.user.id)
-		
+	print(client.user.id) 
+	print('------') 
+
+@client.command()
+async def ping(ctx):
+    await ctx.send(f'🏓 Pong! `{ctx.bot.latency * 1_000:,.0f}ms` ')
+    
+@client.command()
+async def hello(ctx):
+	await ctx.send('Ello, How may i be of service to you.....')
+	
+@client.command()
+async def goodbye(ctx):
+	await ctx.send('Fine, I see how it is, Just Leave!!!')
+
+
+@client.command()
+async def info(ctx):
+	await ctx.send('Ello, need some help huh,\n\n .ping\n .hello\n .goodbye\n .info\n\nThese are the available commands at this time.....')
+	
+
 client.run('TOKEN')

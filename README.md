@@ -7,3 +7,6 @@ I am currently learning Python 3 through Sololearn, and using termux as my conso
 Any help is much appreciated
 
 Thank you
+
+
+I use a one(1) space indent due to being a on an Android deviced

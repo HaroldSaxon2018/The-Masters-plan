@@ -509,32 +509,3 @@ async def addrole(ctx):
  
  
 client.run('NTQ3NjA0NzE1NDEyNjUyMDMz.D2CMmw.PkWciaqxg82VmTMyu_fc98rHCxg')
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
- 
- 
-
-    await ctx.send(embed=embed)
- 
- 
-
-client.run('TOKEN')
